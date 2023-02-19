@@ -26,6 +26,9 @@ public class Gmail extends Email {
     public Gmail(String emailId, int inboxCapacity) {
         super(emailId);
         this.inboxCapacity = inboxCapacity;
+        this.inbox = new ArrayList<>();
+        this.trash = new ArrayList<>();
+
 
     }
 
@@ -91,18 +94,11 @@ public class Gmail extends Email {
         int count = 0;
         for(int i = 0;i<inbox.size();i++)
         {
-            if(inbox.get(i).date.after(start) && inbox.get(i).date.before(end))
+            if(inbox.get(i).date.compareTo(start) >= 0 && inbox.get(i).date.compareTo(end) <= 0)
             {
                 count++;
             }
-            else if(inbox.get(i).date.equals(start))
-            {
-                count++;
-            }
-            else if(inbox.get(i).date.equals(end))
-            {
-                count++;
-            }
+
 
         }
 
